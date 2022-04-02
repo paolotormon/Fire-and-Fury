@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 1;
-    [SerializeField] private float jumpPower = 1;
+    [field: Header("Movement")]
+    [field: SerializeField] public float speed { get; set; } = 2;
+    [SerializeField] private float jumpPower = 20;
+
+    [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     private Rigidbody2D body;
@@ -42,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
         //Wall jump logic
         if (wallJumpCooldown > 0.2f)
         {
-
             //jumping
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
@@ -54,9 +56,10 @@ public class PlayerMovement : MonoBehaviour
             else
                 body.gravityScale = 7;
 
-            //Input.GetKey(KeyCode.UpArrow)
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
                 Jump();
+            }
 
         }
         else
