@@ -11,15 +11,17 @@ public class PlayerMovement : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
-    private float wallJumpCooldown; //for delays between wall jumps
+
     private float horizontalInput;
+    private bool justJumped;
+    private float wallJumpCooldown; //for delays between wall jumps
 
     private void Awake()
     {
-        //get references 
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -58,27 +60,31 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Jump();
+                justJumped = true;
             }
-
         }
         else
         {
             wallJumpCooldown += Time.deltaTime;
         }
-
-
+    }
+    private void FixedUpdate()
+    {
+        if (justJumped)
+            Jump(); justJumped = false;
     }
 
     private void Jump()
     {
         if (isGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");
+            AudioManager.Instance.PlaySound("Jump", 0.25f);
+            body.velocity = new Vector2(body.velocity.x, jumpPower);
         }
         else if (onWall() && !isGrounded())
         {
+            AudioManager.Instance.PlaySound("Jump", 0.25f);
             //flip off the wall
             if (horizontalInput == 0)
             {
@@ -90,10 +96,8 @@ public class PlayerMovement : MonoBehaviour
                 //2 forces to push away from the wall, right and up or left and up
                 body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
             }
-
             wallJumpCooldown = 0;
         }
-
     }
 
     private bool isGrounded()
@@ -112,5 +116,18 @@ public class PlayerMovement : MonoBehaviour
     public bool canAttack()
     {
         return horizontalInput == 0 && isGrounded() && !onWall();
+    }
+
+    //Powerup
+    public void IncreaseSpeed()
+    {
+        StartCoroutine(SpeedIncrease());
+    }
+
+    IEnumerator SpeedIncrease()
+    {
+        this.speed += 5;
+        yield return new WaitForSeconds(3.0f);
+        this.speed -= 5;
     }
 }
