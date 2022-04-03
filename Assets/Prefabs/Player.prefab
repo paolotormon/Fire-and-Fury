@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f859e7f27dc36ff41af5dfeaa450afda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <speed>k__BackingField: 1
+  <speed>k__BackingField: 7
   jumpPower: 20
   groundLayer:
     serializedVersion: 2
@@ -220,10 +220,6 @@ MonoBehaviour:
   attackCooldown: 0.25
   firePoint: {fileID: 5463118832706312394}
   fireballs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
