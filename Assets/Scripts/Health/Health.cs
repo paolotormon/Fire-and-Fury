@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
             {
                 anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 dead = true;
                 Destroy(this.gameObject, 1.0f);
             }
