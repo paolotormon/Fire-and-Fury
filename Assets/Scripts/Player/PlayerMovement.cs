@@ -37,19 +37,10 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < 0f)
             transform.localScale = new Vector3(-1, 1, 1);
 
-
-        //Set animation params
-        //arrow keys not pressed, horizontal input == 0
-        //arrow keys are pressed, horizontal input !=0
-        anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
-
         //Wall jump logic
         if (wallJumpCooldown > 0.2f)
         {
-            //jumping
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-
             if (onWall() && !isGrounded())
             {
                 body.gravityScale = 0;
@@ -70,6 +61,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //Set animation params
+        //arrow keys not pressed, horizontal input == 0
+        //arrow keys are pressed, horizontal input !=0
+        anim.SetBool("run", horizontalInput != 0);
+
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         if (justJumped)
             Jump(); justJumped = false;
     }

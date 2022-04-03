@@ -9,6 +9,7 @@ public class SpeedPowerup : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerMovement pc = collision.gameObject.GetComponent<PlayerMovement>();
+            PlayerAttack pa = collision.gameObject.GetComponent<PlayerAttack>();
             pc.IncreaseSpeed();
             Destroy(this.gameObject);
         }
