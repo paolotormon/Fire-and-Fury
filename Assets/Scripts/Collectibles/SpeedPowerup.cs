@@ -8,10 +8,11 @@ public class SpeedPowerup : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            AudioManager.Instance.PlaySound("powerup");
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
             PlayerMovement pc = collision.gameObject.GetComponent<PlayerMovement>();
-            PlayerAttack pa = collision.gameObject.GetComponent<PlayerAttack>();
             pc.IncreaseSpeed();
-            Destroy(this.gameObject);
         }
     }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9119399960954693157}
   - component: {fileID: 9119399960954693156}
-  - component: {fileID: 949501919}
   - component: {fileID: 9119399960954693153}
+  - component: {fileID: 552416341}
   m_Layer: 0
   m_Name: SpeedPowerup
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9119399960954693152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.59, y: -0.96, z: 0}
-  m_LocalScale: {x: 0.7406765, y: 0.7406765, z: 0.7406765}
+  m_LocalScale: {x: 6.8867807, y: 6.8867807, z: 6.8867807}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: -1016554041
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5691277019112242415, guid: 0a1addae9aac34447b1e890a7ae76292, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -3246028407001408874, guid: f42176bbc0b84b54e83c161abc6eb071, type: 3}
+  m_Color: {r: 1, g: 0.9903465, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,53 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &949501919
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9119399960954693152}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.29, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.645, y: 0}
-      - {x: 0.645, y: 0.25}
-      - {x: 0.525, y: 0.35999998}
-      - {x: 0.275, y: 0.37}
-      - {x: 0.195, y: 0.57}
-      - {x: 0.105, y: 0.64}
-      - {x: -0.095, y: 0.64}
-      - {x: -0.185, y: 0.58}
-      - {x: -0.275, y: 0.35999998}
-      - {x: -0.515, y: 0.35999998}
-      - {x: -0.645, y: 0.26}
-      - {x: -0.645, y: -0.01}
-      - {x: -0.635, y: -0.06}
-      - {x: -0.515, y: -0.25}
-      - {x: -0.49499997, y: -0.59999996}
-      - {x: -0.445, y: -0.64}
-      - {x: -0.13499999, y: -0.64}
-      - {x: -0.005, y: -0.59999996}
-      - {x: 0.145, y: -0.64}
-      - {x: 0.415, y: -0.64}
-      - {x: 0.53499997, y: -0.5}
-      - {x: 0.475, y: -0.19999999}
 --- !u!114 &9119399960954693153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d2db0e005c2384799db8a34c68517e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &552416341
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119399960954693152}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.08
