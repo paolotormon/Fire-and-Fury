@@ -14,6 +14,6 @@ public class ScoreText : MonoBehaviour
     }
     private void Update()
     {
-        this.text.text = "SCORE: " + ScoreManager.Instance.GetScore().ToString();
+        this.text.text = ScoreManager.Instance.GetScore().ToString();
     }
 }
