@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [field: Header("Movement")]
-    [field: SerializeField] public float speed { get; set; } = 2;
-    [SerializeField] private float jumpPower = 20;
+    [field: SerializeField] public float speed { get; set; } = 7.0f;
+    [field: SerializeField] public float jumpPower = 20.0f;
 
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        //origin, size, angle, direction, contactfilter/layer
+        //origin, size, angle, direction, distance, contactfilter/layer
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
@@ -116,15 +116,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Powerup
-    public void IncreaseSpeed()
+    public void IncreaseStats(float speedVal = 2.0f, float jumpVal = 5.0f)
     {
-        StartCoroutine(SpeedIncrease());
+        this.speed += speedVal;
+        this.jumpPower += jumpVal;
+        //StartCoroutine(SpeedIncrease(speedVal, jumpVal));
     }
 
-    IEnumerator SpeedIncrease()
-    {
-        this.speed += 5;
-        yield return new WaitForSeconds(3.0f);
-        this.speed -= 5;
-    }
+    //IEnumerator SpeedIncrease(float speedVal, float jumpVal)
+    //{
+    //    this.speed += speedVal;
+    //    this.jumpPower += jumpVal;
+    //    yield return new WaitForSeconds(3.0f);
+    //    this.speed -= speedVal;
+    //}
 }

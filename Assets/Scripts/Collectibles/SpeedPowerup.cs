@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpeedPowerup : MonoBehaviour
 {
+    [SerializeField] private float speedVal = 2.0f;
+    [SerializeField] private float jumpVal = 5.0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -12,7 +14,7 @@ public class SpeedPowerup : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
             PlayerMovement pc = collision.gameObject.GetComponent<PlayerMovement>();
-            pc.IncreaseSpeed();
+            pc.IncreaseStats(speedVal, jumpVal);
         }
     }
 }
