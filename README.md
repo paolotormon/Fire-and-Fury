@@ -8,3 +8,6 @@
 Option 2: Visit - https://play.unity.com/mg/other/webgl-builds-175539 
 
 ***strongly recommended for less lag**
+
+---
+Walkthrough: https://www.youtube.com/watch?v=gGTMd5AMLIE
