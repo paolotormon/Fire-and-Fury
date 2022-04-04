@@ -57,8 +57,7 @@ public class Health : MonoBehaviour
                     //Player
                     GetComponent<PlayerMovement>().enabled = false;
                     GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                    Destroy(this.gameObject, 1.5f);
-                    LoadLevel();
+                    StartCoroutine(PlayerDeath());
                 }
                 else if (GetComponentInParent<EnemyPatrol>())
                 {
@@ -66,10 +65,16 @@ public class Health : MonoBehaviour
                     GetComponentInParent<EnemyPatrol>().enabled = false;
                     GetComponent<MeleeEnemy>().enabled = false;
                     Destroy(this.gameObject, 1.0f);
-
                 }
             }
         }
+    }
+
+    public IEnumerator PlayerDeath()
+    {
+        //Destroy(this.gameObject, 1.5f);
+        yield return new WaitForSeconds(1.5f);
+        LoadLevel();
     }
 
     public void AddHealth(float _value)

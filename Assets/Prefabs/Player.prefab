@@ -243,5 +243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  iFramesDuration: 1
+  iFramesDuration: 2
   numberOfFlashes: 3
+  levelToLoad: 5
