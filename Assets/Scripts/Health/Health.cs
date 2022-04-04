@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     [Header("Health")]
@@ -17,6 +17,9 @@ public class Health : MonoBehaviour
 
     private bool invulnerable;
 
+    [Header("Death")]
+    [SerializeField] private int levelToLoad = 5;
+
     private void Awake()
     {
         currentHealth = startingHealth;
@@ -24,6 +27,14 @@ public class Health : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
     }
 
+    public void LoadLevel()
+    {
+        if (levelToLoad == 0)
+        {
+            ScoreManager.Instance.ResetScore();
+        }
+        SceneManager.LoadScene(levelToLoad);
+    }
     public void TakeDamage(float _damage)
     {
         if (invulnerable) return;
@@ -39,22 +50,25 @@ public class Health : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("die");
+                dead = true;
+
                 if (GetComponent<PlayerMovement>() != null)
                 {
                     //Player
                     GetComponent<PlayerMovement>().enabled = false;
                     GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    Destroy(this.gameObject, 1.5f);
+                    LoadLevel();
                 }
                 else if (GetComponentInParent<EnemyPatrol>())
                 {
                     //Enemy
                     GetComponentInParent<EnemyPatrol>().enabled = false;
                     GetComponent<MeleeEnemy>().enabled = false;
-                }
-                dead = true;
-                Destroy(this.gameObject, 1.0f);
-            }
+                    Destroy(this.gameObject, 1.0f);
 
+                }
+            }
         }
     }
 
