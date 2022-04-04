@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     private bool hit;
     private float lifetime;
 
+    [SerializeField] private float damage = 1;
+
     private Animator anim;
     private BoxCollider2D boxCollider;
 
@@ -29,6 +31,8 @@ public class Projectile : MonoBehaviour
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
+        if (collision.tag == "Enemy")
+            collision.GetComponent<Health>().TakeDamage(damage);
     }
     public void SetDirection(float _direction)
     {
