@@ -47,6 +47,8 @@ public class Firetrap : MonoBehaviour
         yield return new WaitForSeconds(activeTime);
         triggered = false;
         active = false;
+        anim.SetBool("activated", false);
+
     }
 
 }

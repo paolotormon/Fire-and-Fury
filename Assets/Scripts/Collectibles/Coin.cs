@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private AudioSource audSrc;
-    private void Awake()
-    {
+    //private AudioSource audSrc;
+    //private void Awake()
+    //{
         //audSrc = GetComponent<AudioSource>();
-    }
+    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
         transform.Translate(movementSpeed, 0, 0);
 
         lifetime += Time.deltaTime;
-        if (lifetime > 5) gameObject.SetActive(false);
+        if (lifetime > 5) Deactivate();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,15 +32,17 @@ public class Projectile : MonoBehaviour
     }
     public void SetDirection(float _direction)
     {
-        lifetime = 0;
-        direction = _direction;
-        gameObject.SetActive(true);
-        hit = false;
-        boxCollider.enabled = true;
+        this.lifetime = 0;
+        this.direction = _direction;
+
+        this.gameObject.SetActive(true);
+        this.boxCollider.enabled = true;
+        this.hit = false;
 
         float localScaleX = transform.localScale.x;
         if (Mathf.Sign(localScaleX) != _direction)
             localScaleX = -localScaleX;
+
 
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
     }
