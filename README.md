@@ -11,3 +11,7 @@ Option 2: Visit - https://play.unity.com/mg/other/webgl-builds-175539
 
 ---
 Walkthrough: https://www.youtube.com/watch?v=gGTMd5AMLIE
+
+---
+## High Concept Document
+https://github.com/paolotormon/Fire-and-Fury/blob/main/Fire%20and%20Fury%20High%20Concept%20Document.pdf
